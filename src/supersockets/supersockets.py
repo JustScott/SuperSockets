@@ -29,6 +29,7 @@ import socket
 from listcrypt import encrypt, decrypt, sha256, convert_data, convert_data_back
 from rapidrsa import rsa
 import json
+from time import sleep
 
 class connect:
     '''
@@ -71,11 +72,14 @@ class connect:
         if self.client:
             client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             client.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            client.settimeout(socket_timeout)
             try:
                 client.connect((ip, port))
             except ConnectionRefusedError:
-                raise ConnectionRefusedError("Is your server on?")
+                try:
+                    sleep(.00001) #Allows the server time to reset if reconnecting quickly
+                    client.connect((ip,port))
+                except ConnectionRefusedError:
+                    raise ConnectionRefusedError("Is your server on?")
             client.settimeout(socket_timeout)
             self.con = client
             
@@ -94,9 +98,10 @@ class connect:
             self.con, self.address = server.accept()
 
         self.key = key
+        
+        self.rsa = rsa
 
         if RSA:
-            self.rsa = rsa()
             self.create_secure_connection(True)
         if not RSA:
             self.create_secure_connection(False)
@@ -189,6 +194,7 @@ class connect:
         if not key:
             self.con.send(data.encode("utf-8"))
 
+
         return True
 
 
@@ -262,7 +268,7 @@ if __name__=="__main__":
         server = connect(ip="0.0.0.0", port="1001", connection_type="server", RSA=True)
         server.send("Can you here me?")
         print(server.recv())
-        '''Not required to close the connection, but it's good practice. Close server connections only
+        '''Not required to close the connection, but it's good practice. Only close server connections
         if you don't plan on connecting to any more clients'''
         server.close_connection()        
 
