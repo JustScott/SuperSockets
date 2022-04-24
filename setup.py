@@ -3,7 +3,7 @@ from setuptools import setup
 with open("README.md", "r") as file:
     long_description = file.read()
 
-VERSION = '0.0.2'
+VERSION = '0.0.3'
 DESCRIPTION = "Easy to use implementation of the built in 'socket' library"
 
 # Setting up

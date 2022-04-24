@@ -1,7 +1,7 @@
 '''
 Module to simplify the process of creating servers and clients, with seamless built in encryption options
 
-Class:
+Classes:
     connect(self, ip:str, port:int, connection_type:str, key=None, RSA=None, socket_timeout=3)
         Class for easily creating socket connections, with built in encryption options. It's pointless
         to set the RSA parameter when connection_type='client', since the server decides whether or not to use RSA.
