@@ -42,7 +42,7 @@ client.close_connection()
 
 - <a href="https://pypi.org/project/pycryptodome/">pycryptodome on PyPi</a>
 
-<h4>listcrypt == 0.1.7</h4>
+<h4>listcrypt == 0.1.8</h4>
 
 - <a href="https://github.com/JustScott/ListCrypt">listcrypt on GitHub</a>
 
