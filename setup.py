@@ -3,7 +3,7 @@ from setuptools import setup
 with open("README.md", "r") as file:
     long_description = file.read()
 
-VERSION = '0.0.4'
+VERSION = '0.0.5'
 DESCRIPTION = "Easy to use implementation of the built in 'socket' library"
 
 # Setting up
@@ -22,7 +22,7 @@ setup(
     },
     package_dir={"":"src"},
     packages=["supersockets"],
-    install_requires=['listcrypt','rapidrsa'],
+    install_requires=['listcrypt==0.1.8','rapidrsa==0.0.6'],
     keywords=['python','networking','sockets'],
     classifiers=[
         'Development Status :: 3 - Alpha',
