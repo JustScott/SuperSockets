@@ -84,7 +84,6 @@ class connect:
             #Defining socket settings
             server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            server.settimeout(socket_timeout)
 
             #Sets up the server connection, with helpful error messages for common configuration mistakes
             try:
@@ -97,11 +96,15 @@ class connect:
             #Listens for, and opens connections with clients 
             server.listen()
             self.con, self.address = server.accept()
-
+            server.settimeout(socket_timeout)
+        
         self.key = key
 
-        if RSA or self.client:
+        if RSA:
             self.rsa = rsa()
+        if self.client:
+            #Set the public_key to a random string so the client doesn't unnecessarily generate its own keys
+            self.rsa = rsa(public_key='temporary')
 
         self.create_secure_connection(RSA)
 
@@ -143,12 +146,23 @@ class connect:
             self.send("rsa_disabled")
         
         if self.client:
-            public_key = self.recv() ##
-            if public_key != 'rsa_disabled':
-                #Set the public_key that the server sends 
-                rsa = self.rsa
-                rsa.public_key, rsa.private_key = public_key,None
+            #Waits 30 seconds to recieve the public_key from the server, otherwise it raises an error
+            received_key = False
+            for i in range(30):
+                try:
+                    public_key = self.recv()
+                    received_key = True
+                    break
+                except socket.timeout:
+                    pass
+                sleep(1)
+            if not received_key:
+                raise socket.timeout("Wait 30 seconds, but never received the public key from the server")
 
+            if public_key != 'rsa_disabled':
+                #Setting the public key
+                rsa = self.rsa
+                rsa.public_key = public_key
                 #Generate and encrypt a random string of characters, and send it to the server
                 session_password = rsa.generate_password()
                 encrypted_session_password = rsa.encrypt(session_password)
