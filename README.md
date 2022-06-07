@@ -22,6 +22,8 @@ server.close_connection()
 <h4>Client Configuration</h4>
 
 ```python
+from supersockets import connect
+
 #Connect to server
 client = connect(ip="0.0.0.0", port="1001", connection_type="client", RSA=True)
 
@@ -42,13 +44,13 @@ client.close_connection()
 
 - <a href="https://pypi.org/project/pycryptodome/">pycryptodome on PyPi</a>
 
-<h4>listcrypt == 0.1.8</h4>
+<h4>listcrypt == 0.1.9</h4>
 
 - <a href="https://github.com/JustScott/ListCrypt">listcrypt on GitHub</a>
 
 - <a href="https://pypi.org/project/listcrypt/">listcrypt on PyPi</a>
 
-<h4>rapidrsa == 0.0.5</h4>
+<h4>rapidrsa == 0.0.6</h4>
 
 - <a href="https://github.com/JustScott/RapidRSA">rapidrsa on GitHub</a>
 

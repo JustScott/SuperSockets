@@ -268,10 +268,13 @@ class connect:
             while len(data) < size:
                 received = self.con.recv(65536)
                 if key:
-                    data += decrypt(key, received)
+                    data += received
                 else:
                     data += received.decode("utf-8")
         
+        if key:
+            data = decrypt(key, data)
+
         #Converting data back to its origional format
         metadata = json.loads(data)
         data = convert_data_back((metadata["data"], metadata["type"]))
