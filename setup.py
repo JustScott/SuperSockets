@@ -22,7 +22,7 @@ setup(
     },
     package_dir={"":"src"},
     packages=["supersockets"],
-    install_requires=['pycryptodome==3.14.1','listcrypt==0.1.9','rapidrsa==0.0.6'],
+    install_requires=['pycryptodome==3.15.0','listcrypt==0.2.2','rapidrsa==0.0.6'],
     keywords=['python','networking','sockets'],
     classifiers=[
         'Development Status :: 3 - Alpha',

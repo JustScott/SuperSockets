@@ -14,10 +14,6 @@ server = connect(ip="0.0.0.0", port="1001", connection_type="server", RSA=True)
 
 server.send("Can you here me?")
 print(server.recv())
-
-'''Not required to close the connection, but it's good practice. Close server connections only
-if you don't plan on connecting to any more clients'''
-server.close_connection()
 ```
 <h4>Client Configuration</h4>
 
@@ -29,22 +25,19 @@ client = connect(ip="0.0.0.0", port="1001", connection_type="client", RSA=True)
 
 print(server.recv())
 client.send("Loud and clear!")
-
-#Not required to close the connection, but it's good practice
-client.close_connection()
 ```
 
 <br>
 
 <h2>Required Dependences From PyPi</h2>
 
-<h4>pycryptodome == 3.14.1</h4>
+<h4>pycryptodome == 3.15.0</h4>
 
 - <a href="https://github.com/Legrandin/pycryptodome">pycryptodome on GitHub</a>
 
 - <a href="https://pypi.org/project/pycryptodome/">pycryptodome on PyPi</a>
 
-<h4>listcrypt == 0.1.9</h4>
+<h4>listcrypt == 0.2.2</h4>
 
 - <a href="https://github.com/JustScott/ListCrypt">listcrypt on GitHub</a>
 
@@ -76,9 +69,9 @@ Classes:
         recv() -> any
             Ensures successful receival of data sent from the 'send' method            
         
-        close_connection(self) -> bool
-            Close the connection between the client and server. Both sides can use this method.
-            This isn't always necessary, but it's good practice to close connections you're no
-            longer using
+		__del__(self) -> bool
+            Automatically closes the connection between the 
+            client and server upon the programs end.
+
 '''
 ```

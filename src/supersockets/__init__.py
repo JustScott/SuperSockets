@@ -17,10 +17,9 @@ Classes:
         recv() -> any
             Ensures successful receival of data sent from the 'send' method            
         
-        close_connection(self) -> bool
-            Close the connection between the client and server. Both sides can use this method.
-            This isn't always necessary, but it's good practice to close connections you're no
-            longer using
+        __del__(self) -> bool
+            Automatically closes the connection between the 
+            client and server upon the programs end.
 
 '''
 
