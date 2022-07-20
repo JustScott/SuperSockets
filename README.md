@@ -31,19 +31,19 @@ client.send("Loud and clear!")
 
 <h2>Required Dependences From PyPi</h2>
 
-<h4>pycryptodome == 3.15.0</h4>
+<h4>pycryptodome >= 3.15.0</h4>
 
 - <a href="https://github.com/Legrandin/pycryptodome">pycryptodome on GitHub</a>
 
 - <a href="https://pypi.org/project/pycryptodome/">pycryptodome on PyPi</a>
 
-<h4>listcrypt == 0.2.2</h4>
+<h4>listcrypt >= 0.2.4</h4>
 
 - <a href="https://github.com/JustScott/ListCrypt">listcrypt on GitHub</a>
 
 - <a href="https://pypi.org/project/listcrypt/">listcrypt on PyPi</a>
 
-<h4>rapidrsa == 0.0.6</h4>
+<h4>rapidrsa >= 0.0.6</h4>
 
 - <a href="https://github.com/JustScott/RapidRSA">rapidrsa on GitHub</a>
 
