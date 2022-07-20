@@ -1,0 +1,3 @@
+listcrypt==0.2.4
+pycryptodome==3.14.1
+rapidrsa==0.0.6
