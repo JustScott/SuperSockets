@@ -55,13 +55,13 @@ Can you here me?
 
 - <a href="https://pypi.org/project/pycryptodome/">pycryptodome on PyPi</a>
 
-<h4>listcrypt >= 0.2.5</h4>
+<h4>listcrypt >= 1.0.0</h4>
 
 - <a href="https://github.com/JustScott/ListCrypt">listcrypt on GitHub</a>
 
 - <a href="https://pypi.org/project/listcrypt/">listcrypt on PyPi</a>
 
-<h4>rapidrsa >= 0.0.7</h4>
+<h4>rapidrsa >= 1.0.0</h4>
 
 - <a href="https://github.com/JustScott/RapidRSA">rapidrsa on GitHub</a>
 
